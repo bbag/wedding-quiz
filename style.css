@@ -1,0 +1,421 @@
+/* -------------------------------------------------------- */
+/* Reset                                                    */
+/* -------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    margin: 0;
+    text-align: left;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+[tabindex="-1"]:focus {
+    outline: none !important;
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-top: 0;
+}
+
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+    outline: 0;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+textarea {
+    touch-action: manipulation;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+html [type="button"] {
+    -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* -------------------------------------------------------- */
+/* Modal                                                    */
+/* -------------------------------------------------------- */
+
+.modal {
+    outline: 1px solid #000;
+    max-width: 100%;
+    width: 36rem;
+}
+
+/* -------------------------------------------------------- */
+/* Billy & Emily                                            */
+/* -------------------------------------------------------- */
+
+.billy-and-emily {
+    background: rgba(255, 0, 0, 0.1);
+    bottom: 0;
+    height: 75vw;
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+#billy,
+#emily {
+    display: flex;
+    position: absolute;
+    width: 20%;
+}
+
+#billy > div,
+#emily > div {
+    content: '';
+}
+
+.hand {
+    background: #F4C6A1;
+    border-radius: 100%;
+    left: 100%;
+    padding-bottom: 30%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+}
+
+/* -------------------------------------------------------- */
+/* Billy                                                    */
+/* -------------------------------------------------------- */
+
+#billy {
+    right: 20%;
+}
+
+#billy .body {
+    width: 100%;
+}
+
+#billy .head {
+    bottom: 72%;
+    left: 49%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+#billy [class^='arm'],
+#billy [class^='forearm'] {
+    background: #7C7C7C;
+    border-radius: 72rem;
+    position: absolute;
+    top: 15%;
+    transform-origin: 10% 50%;
+}
+
+#billy [class^='arm'] {
+    height: 11%;
+    width: 70%;
+}
+
+#billy [class^='forearm'] {
+    height: 100%;
+    width: 100%;
+}
+
+#billy .arm--left {
+    left: 5%;
+    transform: rotate(-140deg);
+}
+
+#billy .forearm--left {
+    transform: rotate(40deg);
+    position: absolute;
+    left: 80%;
+    top: 0%;
+}
+
+#billy .arm--right {
+    left: 83%;
+    transform: rotate(-60deg);
+}
+
+#billy .forearm--right {
+    transform: rotate(-40deg);
+    position: absolute;
+    left: 80%;
+    top: 0%;
+}
+
+#billy[data-state='yay'] .arm--left,
+#billy[data-state='yay'] .arm--right,
+#billy[data-state='yay'] .forearm--left,
+#billy[data-state='yay'] .forearm--right {
+    animation-direction: alternate;
+    animation-duration: 350ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+#billy[data-state='yay'] .arm--left {
+    animation-name: yay--billy-arm-left;
+}
+
+#billy[data-state='yay'] .forearm--left {
+    animation-name: yay--billy-forearm-left;
+}
+
+#billy[data-state='yay'] .arm--right {
+    animation-name: yay--billy-arm-right;
+}
+
+#billy[data-state='yay'] .forearm--right {
+    animation-name: yay--billy-forearm-right;
+}
+
+@keyframes yay--billy-arm-left {
+    from { transform: rotate(-120deg); }
+    to { transform: rotate(-220deg); }
+}
+
+@keyframes yay--billy-forearm-left {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(130deg); }
+}
+
+@keyframes yay--billy-arm-right {
+    from { transform: rotate(-65deg); }
+    to { transform: rotate(20deg); }
+}
+
+@keyframes yay--billy-forearm-right {
+    from { transform: rotate(-15deg); }
+    to { transform: rotate(-130deg); }
+}
+
+/* -------------------------------------------------------- */
+/* Emily                                                    */
+/* -------------------------------------------------------- */
+
+#emily {
+    left: 20%;
+}
+
+#emily .body {
+    width: 100%;
+}
+
+#emily .head {
+    bottom: 72%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+#emily [class^='arm'],
+#emily [class^='forearm'] {
+    background: #F4C6A1;
+    border-radius: 72rem;
+    position: absolute;
+    top: 15%;
+    transform-origin: 10% 50%;
+}
+
+#emily [class^='arm'] {
+    height: 8.5%;
+    width: 70%;
+}
+
+#emily [class^='forearm'] {
+    height: 100%;
+    width: 100%;
+}
+
+#emily .arm--left {
+    left: 5%;
+    transform: rotate(-120deg);
+}
+
+#emily .forearm--left {
+    transform: rotate(20deg);
+    position: absolute;
+    left: 80%;
+    top: 0%;
+}
+
+#emily .arm--right {
+    left: 83%;
+    transform: rotate(-60deg);
+}
+
+#emily .forearm--right {
+    transform: rotate(-20deg);
+    position: absolute;
+    left: 80%;
+    top: 0%;
+}
+
+#emily[data-state='yay'] .arm--left,
+#emily[data-state='yay'] .arm--right,
+#emily[data-state='yay'] .forearm--left,
+#emily[data-state='yay'] .forearm--right {
+    animation-direction: alternate;
+    animation-duration: 450ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+#emily[data-state='yay'] .arm--left {
+    animation-name: yay--emily-arm-left;
+}
+
+#emily[data-state='yay'] .forearm--left {
+    animation-name: yay--emily-forearm-left;
+}
+
+#emily[data-state='yay'] .arm--right {
+    animation-name: yay--emily-arm-right;
+}
+
+#emily[data-state='yay'] .forearm--right {
+    animation-name: yay--emily-forearm-right;
+}
+
+@keyframes yay--emily-arm-left {
+    from { transform: rotate(-120deg); }
+    to { transform: rotate(-220deg); }
+}
+
+@keyframes yay--emily-forearm-left {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(135deg); }
+}
+
+@keyframes yay--emily-arm-right {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(-65deg); }
+}
+
+@keyframes yay--emily-forearm-right {
+    from { transform: rotate(-130deg); }
+    to { transform: rotate(-15deg); }
+}

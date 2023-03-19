@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+        <title>Wedding Quiz &ndash; Emily & Billy 2023</title>
+    </head>
+    <body>
+        <div class="quiz">
+            <div class="quiz__question">
+                <h2>Question 1</h2>
+                <p>What is the name of the groom?</p>
+            </div>
+            <div class="quiz__answers">
+                <button class="quiz__answer">Billy</button>
+                <button class="quiz__answer">Bob</button>
+                <button class="quiz__answer">Bart</button>
+                <button class="quiz__answer">Bubba</button>
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal-content">
+                <h2>You did it!</h2>
+                <p>This is some flavor text.</p>
+                <button>Next</button>
+            </div>
+            <div class="billy-and-emily">
+                <div id="emily" data-state="yay">
+                    <img class="body" src="dress.svg" alt="">
+                    <div class="arm--left">
+                        <div class="forearm--left">
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                    <div class="arm--right">
+                        <div class="forearm--right">
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                    <img class="head" src="emily-head-sm.png" alt="Billy's head" />
+                </div>
+                <div id="billy" data-state="yay">
+                    <img class="body" src="suit.svg" alt="">
+                    <div class="arm--left">
+                        <div class="forearm--left">
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                    <div class="arm--right">
+                        <div class="forearm--right">
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                    <img class="head" src="billy-head-sm.png" alt="Billy's head" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
