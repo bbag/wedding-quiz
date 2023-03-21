@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://api.fontshare.com/v2/css?f[]=chubbo@400&f[]=stardom@400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
         <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
         <title>Wedding Quiz &ndash; Emily & Billy 2023</title>
@@ -20,43 +21,74 @@
                 <button class="quiz__answer">Bart</button>
                 <button class="quiz__answer">Bubba</button>
             </div>
+            <button id="submit" class="button">Submit</button>
         </div>
-        <div class="modal">
+        <div class="modal" data-modal-active="false">
             <div class="modal-content">
-                <h2>You did it!</h2>
-                <p>This is some flavor text.</p>
-                <button>Next</button>
-            </div>
-            <div class="billy-and-emily">
-                <div id="emily" data-state="yay">
-                    <img class="body" src="dress.svg" alt="">
-                    <div class="arm--left">
-                        <div class="forearm--left">
-                            <div class="hand"></div>
+                <div class="billy-and-emily">
+                    <div id="emily" data-state="yay">
+                        <img class="body" src="dress.svg" alt="">
+                        <div class="arm--left">
+                            <div class="forearm--left">
+                                <div class="hand"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="arm--right">
-                        <div class="forearm--right">
-                            <div class="hand"></div>
+                        <div class="arm--right">
+                            <div class="forearm--right">
+                                <div class="hand"></div>
+                            </div>
                         </div>
+                        <img class="head" src="emily-head-sm.png" alt="Billy's head" />
                     </div>
-                    <img class="head" src="emily-head-sm.png" alt="Billy's head" />
+                    <div id="billy" data-state="yay">
+                        <img class="body" src="suit.svg" alt="">
+                        <div class="arm--left">
+                            <div class="forearm--left">
+                                <div class="hand"></div>
+                            </div>
+                        </div>
+                        <div class="arm--right">
+                            <div class="forearm--right">
+                                <div class="hand"></div>
+                            </div>
+                        </div>
+                        <img class="head" src="billy-head-sm.png" alt="Billy's head" />
+                    </div>
                 </div>
-                <div id="billy" data-state="yay">
-                    <img class="body" src="suit.svg" alt="">
-                    <div class="arm--left">
-                        <div class="forearm--left">
-                            <div class="hand"></div>
-                        </div>
+                <div class="modal-content__card">
+                    <div class="modal-content__card-border">
+                        <h2 class="modal-content__heading">Correct!</h2>
+                        <p>This is some flavor text.</p>
+                        <button class="bootan" style="margin-top: 6vw;">
+                            Next
+                            <svg xmlns="http://www.w3.org/2000/svg" class="line-icon" viewBox="0 0 24 24" style="margin-left: 1rem;">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <line x1="13" y1="18" x2="19" y2="12" />
+                                <line x1="13" y1="6" x2="19" y2="12" />
+                            </svg>
+                        </button>
                     </div>
-                    <div class="arm--right">
-                        <div class="forearm--right">
-                            <div class="hand"></div>
-                        </div>
-                    </div>
-                    <img class="head" src="billy-head-sm.png" alt="Billy's head" />
+                    <img class="branch1" src="branch1.png" alt="">
+                    <img class="branch2" src="branch2.png" alt="">
                 </div>
             </div>
         </div>
+        <script>
+            const submitButton = document.querySelector('#submit');
+            const closeModalButton = document.querySelector('.modal-content__card button');
+            const modal = document.querySelector('.modal');
+            const modalActive = modal.dataset.modalActive;
+
+            submitButton.addEventListener('click', () => {
+                console.log('opening modal');
+                modal.dataset.modalActive = true;
+            });
+            
+            closeModalButton.addEventListener('click', () => {
+                console.log('closing modal');
+                modal.dataset.modalActive = false;
+            });
+        </script>
     </body>
 </html>
