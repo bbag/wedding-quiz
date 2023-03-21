@@ -165,7 +165,50 @@ textarea {
     padding: 8vw;
 }
 .quiz__answer {
+    border: 1px solid #2D563F;
+    cursor: pointer;
     display: flex;
+    margin: 1rem 0;
+    padding: 0.75rem 0.75rem 0.75rem 3rem;
+    position: relative;
+}
+
+.quiz__answer::after,
+.quiz__answer::before {
+    border-radius: 1rem;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.quiz__answer::before {
+    background: #2D563F;
+    height: 1.5rem;
+    left: 0.75rem;
+    width: 1.5rem;
+    z-index: 1;
+}
+
+.quiz__answer::after {
+    background: #FFF;
+    height: 0.75rem;
+    left: 1.125rem;
+    width: 0.75rem;
+    z-index: 2;
+}
+
+.quiz__answer input[type='radio'] {
+    border: 0 !important;
+    clip: rect(0, 0, 0, 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
 }
 
 /* -------------------------------------------------------- */
