@@ -162,9 +162,12 @@ textarea {
 /* -------------------------------------------------------- */
 
 .quiz {
-
-
+    padding: 8vw;
 }
+.quiz__answer {
+    display: flex;
+}
+
 /* -------------------------------------------------------- */
 /* Buttons                                                  */
 /* -------------------------------------------------------- */
@@ -336,17 +339,18 @@ textarea {
     background: #7C7C7C;
     border-radius: 72rem;
     position: absolute;
-    top: 15%;
     transform-origin: 10% 50%;
 }
 
 #billy [class^='arm'] {
     height: 11%;
+    top: 14%;
     width: 70%;
 }
 
 #billy [class^='forearm'] {
     height: 100%;
+    top: 15%;
     width: 100%;
 }
 
@@ -460,7 +464,7 @@ textarea {
 }
 
 #emily .arm--left {
-    left: 5%;
+    left: 8%;
     transform: rotate(-120deg);
 }
 
@@ -472,7 +476,7 @@ textarea {
 }
 
 #emily .arm--right {
-    left: 83%;
+    left: 80%;
     transform: rotate(-60deg);
 }
 
