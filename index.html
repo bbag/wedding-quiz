@@ -11,25 +11,36 @@
     </head>
     <body>
         <div class="quiz">
-            <h2 class="question__title">Question 1</h2>
-            <p class="question__text">Whose wedding even is this...?</p>
-            <div class="quiz__answers">
-                <label class="quiz__answer">
-                    <input type="radio" name="question1" />
-                    Emily &amp; Billy
-                </label>
-                <label class="quiz__answer">
-                    <input type="radio" name="question1" />
-                    Somebody's...
-                </label>
-                <label class="quiz__answer">
-                    <input type="radio" name="question1" />
-                    Wedding?
-                </label>
-                <label class="quiz__answer">
-                    <input type="radio" name="question1" />
-                    I'm just here for the cake
-                </label>
+            <div class="questions">
+                <!-- <div class="question">
+                    <h2 class="question__title">Question 1</h2>
+                    <p class="question__text">Whose wedding even is this...?</p>
+                    <div class="question__answers">
+                        <label class="question__answer">
+                            <input type="radio" name="question1" />
+                            <span class="radio-handle"></span>
+                            <span class="question__answer-text">Emily &amp; Billy</span>
+                            <svg viewBox="0 0 24 24" class="line-icon">
+                                <polyline points="20 7 10 17 5 12" />
+                            </svg>
+                        </label>
+                        <label class="question__answer">
+                            <input type="radio" name="question1" />
+                            <span class="radio-handle"></span>
+                            <span class="question__answer-text">Somebody's...</span>
+                        </label>
+                        <label class="question__answer">
+                            <input type="radio" name="question1" />
+                            <span class="radio-handle"></span>
+                            <span class="question__answer-text">Wedding?</span>
+                        </label>
+                        <label class="question__answer">
+                            <input type="radio" name="question1" />
+                            <span class="radio-handle"></span>
+                            <span class="question__answer-text">I'm just here for the cake</span>
+                        </label>
+                    </div>
+                </div> -->
             </div>
             <button id="submit" class="bootan">Submit</button>
         </div>
@@ -69,10 +80,9 @@
                     <div class="modal-content__card-border">
                         <h2 class="modal-content__heading">Correct!</h2>
                         <p>This is some flavor text.</p>
-                        <button class="bootan" style="margin-top: 6vw;">
+                        <button class="bootan" style="margin-top: 2rem;">
                             Next
-                            <svg xmlns="http://www.w3.org/2000/svg" class="line-icon" viewBox="0 0 24 24" style="margin-left: 1rem;">
-                                <path stroke="none" d="M0 0h24v24H0z" />
+                            <svg viewBox="0 0 24 24" class="line-icon" style="margin-left: 1rem;">
                                 <line x1="5" y1="12" x2="19" y2="12" />
                                 <line x1="13" y1="18" x2="19" y2="12" />
                                 <line x1="13" y1="6" x2="19" y2="12" />
@@ -85,21 +95,11 @@
             </div>
         </div>
         <script>
-            const submitButton = document.querySelector('#submit');
-            const closeModalButton = document.querySelector('.modal-content__card button');
-            const modal = document.querySelector('.modal');
-            const modalActive = modal.dataset.modalActive;
+            // -------------------------------------------------------------- //
+            // Questions logic                                                //
+            // -------------------------------------------------------------- //
 
-            submitButton.addEventListener('click', () => {
-                console.log('opening modal');
-                modal.dataset.modalActive = true;
-            });
-            
-            closeModalButton.addEventListener('click', () => {
-                console.log('closing modal');
-                modal.dataset.modalActive = false;
-            });
-
+            let currentQuestion = 0;
             const questions = [
                 {
                     question: 'Whose wedding even is this...?',
@@ -121,7 +121,109 @@
                     ],
                     correctAnswer: 1
                 },
-            ]
+                {
+                    question: 'What is the airspeed velocity of an unlaiden swallow?',
+                    answers: [
+                        'What do you mean?',
+                        'African or European?',
+                        'I don\'t know that!',
+                        'Ahhhhhhhh!'
+                    ],
+                    correctAnswer: 3
+                },
+            ];
+
+            function addCurrentQuestion() {
+                const question = questions[currentQuestion];
+                const questionDiv = document.createElement('div');
+                const questionTitle = document.createElement('h2');
+                const questionText = document.createElement('p');
+                const questionAnswers = document.createElement('div');
+
+                questionDiv.classList.add('question');
+                questionTitle.classList.add('question__title');
+                questionTitle.textContent = `Question ${currentQuestion + 1}`;
+                questionText.classList.add('question__text');
+                questionText.textContent = question.question;
+                questionAnswers.classList.add('question__answers');
+
+                question.answers.forEach((answer, index) => {
+                    const questionAnswer = document.createElement('label');
+                    const questionAnswerInput = document.createElement('input');
+                    const questionAnswerHandle = document.createElement('span');
+                    const questionAnswerText = document.createElement('span');
+                    
+                    questionAnswer.classList.add('question__answer');
+                    questionAnswerInput.type = 'radio';
+                    questionAnswerInput.name = `question${currentQuestion}`;
+                    questionAnswerHandle.classList.add('radio-handle');
+                    questionAnswerText.classList.add('question__answer-text');
+                    questionAnswerText.textContent = answer;
+
+                    questionAnswer.appendChild(questionAnswerInput);
+                    questionAnswer.appendChild(questionAnswerHandle);
+                    questionAnswer.appendChild(questionAnswerText);
+
+                    questionAnswers.appendChild(questionAnswer);
+                });
+
+                questionDiv.appendChild(questionTitle);
+                questionDiv.appendChild(questionText);
+                questionDiv.appendChild(questionAnswers);
+
+                document.querySelector('.questions').appendChild(questionDiv);
+            };
+
+            // Add the first question on page load
+            addCurrentQuestion();
+
+            // -------------------------------------------------------------- //
+            // Modal logic                                                    //
+            // -------------------------------------------------------------- //
+
+            const submitButton = document.querySelector('#submit');
+            const closeModalButton = document.querySelector('.modal-content__card button');
+            const modal = document.querySelector('.modal');
+            const modalActive = modal.dataset.modalActive;
+
+            submitButton.addEventListener('click', () => {
+                console.log('opening modal');
+                modal.dataset.modalActive = true;
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                console.log('closing modal');
+
+                // add the disabled class to the current question div
+                document.querySelectorAll('.question')[currentQuestion].classList.add('disabled');
+
+                // add the disabled attribute to each input in the current question
+                document.querySelectorAll(`.question:nth-child(${currentQuestion + 1}) input`).forEach(input => {
+                    input.disabled = true;
+                });
+
+                // add the checkmark icon to the correct answer
+                const question = questions[currentQuestion];
+                const questionAnswers = document.querySelectorAll(`.question:nth-child(${currentQuestion + 1}) .question__answer`);
+                const questionAnswer = questionAnswers[question.correctAnswer];
+                const questionAnswerIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                const questionAnswerCheckmark = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+
+                questionAnswerIcon.classList.add('line-icon');
+                questionAnswerIcon.setAttribute('viewBox', '0 0 24 24');
+                questionAnswerCheckmark.setAttribute('points', '20 7 10 17 5 12');
+                questionAnswerIcon.appendChild(questionAnswerCheckmark);
+                questionAnswer.appendChild(questionAnswerIcon);
+
+                // increment the current question
+                currentQuestion++;
+
+                // add the new question
+                addCurrentQuestion();
+
+                // close the modal
+                modal.dataset.modalActive = false;
+            });
         </script>
     </body>
 </html>
