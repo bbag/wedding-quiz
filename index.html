@@ -131,38 +131,92 @@
             let currentQuestion = 0;
             const questions = [
                 {
-                    question: 'So, uh... whose wedding even is this?',
+                    question: 'Let’s start off with an easy one... whose wedding even is this?',
                     correctAnswer: 0,
                     answers: [
-                        'Emily & Billy',
-                        'Somebody’s...',
-                        'Wedding?',
-                        'I’m just here for the cake'
+                        {
+                            text: 'Emily & Billy',
+                            modalText: 'Good thing you paid attention to the names on the invite!'
+                        },
+                        {
+                            text: 'Kanye & Kim Kardashian',
+                            modalText: 'It’s not Kanye and Kim, but let’s be real here, Kanye and Kim <em>wish</em> they had a wedding this awesome.' },
+                        {
+                            text: 'Somebody’s...',
+                            modalText: 'Technically correct, just not the correct-est. But don’t worry, you’ll still get a slice of the cake.'
+                        },
+                        {
+                            text: 'I’m just here for the cake',
+                            modalText: 'You’re here for the cake, yes, but you’re also here for the love.'
+                        }
                     ],
-                    modalText: 'This is definitely Billy and Emily’s wedding. You’re here for the cake, but you’re also here for the love.'
                 },
                 {
-                    question: 'What is the name of the venue?',
-                    correctAnswer: 1,
+                    question: 'When did Emily and Billy first meet?',
+                    correctAnswer: 2,
                     answers: [
-                        'The Barn',
-                        'The Barn at the Farm',
-                        'The Farm',
-                        'The Farm at the Barn'
+                        {
+                            text: '1999, at a Y2K party',
+                            modalText: 'Filler text.'
+                        },
+                        {
+                            text: '2012, at an end-of-the-world party',
+                            modalText: 'Thankfully the world didn’t end in 2012, othwerwise they wouldn’t have met in 2019.'
+                        },
+                        {
+                            text: '2019, just before Christmas',
+                            modalText: 'December 21, 2019! It was also right before the end of the world in 2020, but that’s a whole ’nother story...<br /><br />Talk about good timing though!'
+                        },
+                        {
+                            text: 'Last week',
+                            modalText: 'Filler text.'
+                        }
                     ],
-                    modalText: ''
                 },
                 {
-                    question: 'What is the airspeed velocity of an unlaiden swallow?',
+                    question: 'On one of their first dates, Emily took Billy to an activity she loves (and he had never done before). What was it?',
                     correctAnswer: 3,
                     answers: [
-                        'What do you mean?',
-                        'African or European?',
-                        'I don’t know that!',
-                        'Ahhhhhhhh!'
+                        {
+                            text: 'Skydiving',
+                            modalText: 'Neither have been skydiving yet, but now that you mention it... think Emily would be down?'
+                        },
+                        {
+                            text: 'M-m-m-monster Jam!',
+                            modalText: 'They actually <em>did</em> go to Monster Jam once (dressed as rednecks, of course), but huge, loud trucks aren’t exactly a “love” of Emily’s.'
+                        },
+                        {
+                            text: 'Going to watch the sun rise',
+                            modalText: 'Not a bad guess, though, since Billy is practically never up that early.'
+                        },
+                        {
+                            text: 'A spin class',
+                            modalText: 'Emily is a cardio queen, but Billy’s cardio consists of walking from the couch to the fridge. He kept a poker face, powered through, and managed to not pass out.'
+                        }
                     ],
-                    modalText: ''
                 },
+                {
+                    question: 'For the proposal, what object did Billy 3D print to hide the real diamond ring inside of?',
+                    correctAnswer: 1,
+                    answers: [
+                        {
+                            text: 'A puzzle box',
+                            modalText: 'He <em>did</em> give her a puzzle box for her birthday a month before the proposal, but alas, it had no ring inside.'
+                        },
+                        {
+                            text: 'A ring pop candy',
+                            modalText: 'He’d been teasing her about getting her a ring pop for months, so when he finally did, she wasn’t sure it was for real until the top popped off showing the diamond inside.'
+                        },
+                        {
+                            text: 'A goose',
+                            modalText: 'So close yet, so far! While it wasn’t an entire 3D printed goose, the 3D printed ring pop she got <em>did</em> have a goose silhouette on it.',
+                        },
+                        {
+                            text: 'A Tessearact',
+                            modalText: 'The proposal Billy pulled off sure felt like playing 4D chess, but he still couldn’t 3D print a 4D box.'
+                        }
+                    ],
+                }
             ];
 
             const submitButton = document.querySelector('#submit');
@@ -192,7 +246,7 @@
                     questionAnswerInput.name = `question${currentQuestion}`;
                     questionAnswerHandle.classList.add('radio-handle');
                     questionAnswerText.classList.add('question__answer-text');
-                    questionAnswerText.textContent = answer;
+                    questionAnswerText.textContent = answer.text;
 
                     questionAnswer.appendChild(questionAnswerInput);
                     questionAnswer.appendChild(questionAnswerHandle);
@@ -229,13 +283,14 @@
                 'You got it!',
                 'That’s right!',
                 'You’re right!',
-                'Correctamundo!',
                 'Bingo!',
-                'Nailed it!'
+                'Nailed it!',
+                'You are so, so right.'
             ]
             const incorrectHeadings = [
                 'Not quite, sorry!',
                 'Uh oh, wrong!',
+                'Uh oh, incorrect!',
                 'Oops, incorrect!',
                 'Incorrect, sorry!',
                 'Close, but completely wrong.'
@@ -248,7 +303,7 @@
                     const correctAnswer = questions[currentQuestion].correctAnswer;
 
                     // Pick a random 'correct' modal heading if it's correct
-                    if (chosenAnswerText === questions[currentQuestion].answers[correctAnswer]) {
+                    if (chosenAnswerText === questions[currentQuestion].answers[correctAnswer].text) {
                         modalContentHeading.textContent = correctHeadings[Math.floor(Math.random() * incorrectHeadings.length)];
                     }
 
@@ -257,8 +312,13 @@
                         modalContentHeading.textContent = incorrectHeadings[Math.floor(Math.random() * incorrectHeadings.length)];
                     }
 
+                    // Get the index of the chosen answer
+                    const chosenAnswerIndex = questions[currentQuestion].answers.findIndex(answer => answer.text === chosenAnswerText);
+
                     // Add the modal text and show the modal
-                    modalContentText.textContent = questions[currentQuestion].modalText;
+                    modalContentText.innerHTML = questions[currentQuestion].answers[chosenAnswerIndex].modalText;
+
+                    // Show the modal
                     modal.dataset.modalActive = true;
                 }
             });
@@ -310,7 +370,7 @@
                         if (chosenAnswer) {
                             const chosenAnswerText = chosenAnswer.textContent;
                             const correctAnswer = questions[index].correctAnswer;
-                            if (chosenAnswerText === questions[index].answers[correctAnswer]) {
+                            if (chosenAnswerText === questions[index].answers[correctAnswer].text) {
                                 correctAnswers++;
                             }
                         }

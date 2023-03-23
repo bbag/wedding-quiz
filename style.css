@@ -196,6 +196,10 @@ textarea {
     color: #2D563F;
 }
 
+.question.disabled .question__title {
+    color: #B0B0B0;
+}
+
 .question__answer {
     align-items: center;
     border: 1px solid #2D563F;
@@ -379,11 +383,12 @@ textarea {
 
 .branch1 {
     left: 10.5%;
-    top: 8%;
+    top: 5%;
     transform: translate(-50%, -50%);
 }
+
 .branch2 {
-    bottom: 5%;
+    bottom: 3%;
     right: 9%;
     transform: translate(50%, 50%) rotate(160deg);
 }
@@ -395,7 +400,7 @@ textarea {
 .billy-and-emily {
     bottom: 0;
     left: 0;
-    padding-bottom: 20%;
+    padding-bottom: 18%;
     position: relative;
     width: 100%;
 }
@@ -405,12 +410,12 @@ textarea {
     display: flex;
     position: absolute;
     transition: transform 750ms cubic-bezier(0.16, 1.4, 0.3, 1);
-    width: 16%;
+    width: 14%;
 }
 
 .modal[data-modal-active='false'] #billy,
 .modal[data-modal-active='false'] #emily {
-    transform: translateY(115%);
+    transform: translateY(128%);
     transition: transform 450ms cubic-bezier(0.6, 0, 0.4, 1);
     transition-delay: 0s;
 }
@@ -436,8 +441,8 @@ textarea {
 /* -------------------------------------------------------- */
 
 #billy {
-    right: 22%;
-    transition-delay: 500ms;
+    right: 27%;
+    transition-delay: 550ms;
 }
 
 #billy .body {
@@ -547,7 +552,7 @@ textarea {
 /* -------------------------------------------------------- */
 
 #emily {
-    left: 22%;
+    left: 27%;
     transition-delay: 400ms;
 }
 
