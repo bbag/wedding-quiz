@@ -4,45 +4,74 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
         <link href="https://api.fontshare.com/v2/css?f[]=chubbo@400&f[]=stardom@400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
         <title>Wedding Quiz &ndash; Emily & Billy 2023</title>
     </head>
     <body>
-        <div class="quiz">
-            <div class="questions">
-                <!-- <div class="question">
-                    <h2 class="question__title">Question 1</h2>
-                    <p class="question__text">Whose wedding even is this...?</p>
-                    <div class="question__answers">
-                        <label class="question__answer">
-                            <input type="radio" name="question1" />
-                            <span class="radio-handle"></span>
-                            <span class="question__answer-text">Emily &amp; Billy</span>
-                            <svg viewBox="0 0 24 24" class="line-icon">
-                                <polyline points="20 7 10 17 5 12" />
-                            </svg>
-                        </label>
-                        <label class="question__answer">
-                            <input type="radio" name="question1" />
-                            <span class="radio-handle"></span>
-                            <span class="question__answer-text">Somebody's...</span>
-                        </label>
-                        <label class="question__answer">
-                            <input type="radio" name="question1" />
-                            <span class="radio-handle"></span>
-                            <span class="question__answer-text">Wedding?</span>
-                        </label>
-                        <label class="question__answer">
-                            <input type="radio" name="question1" />
-                            <span class="radio-handle"></span>
-                            <span class="question__answer-text">I'm just here for the cake</span>
-                        </label>
-                    </div>
-                </div> -->
+        <div class="quiz-container">
+            <div class="quiz">
+                <div class="questions">
+                    <!-- <div class="question">
+                        <h2 class="question__title">Question 1</h2>
+                        <p class="question__text">Whose wedding even is this...?</p>
+                        <div class="question__answers">
+                            <label class="question__answer">
+                                <input type="radio" name="question1" />
+                                <span class="radio-handle"></span>
+                                <span class="question__answer-text">Emily &amp; Billy</span>
+                                <svg viewBox="0 0 24 24" class="line-icon">
+                                    <polyline points="20 7 10 17 5 12" />
+                                </svg>
+                            </label>
+                            <label class="question__answer">
+                                <input type="radio" name="question1" />
+                                <span class="radio-handle"></span>
+                                <span class="question__answer-text">Somebody's...</span>
+                            </label>
+                            <label class="question__answer">
+                                <input type="radio" name="question1" />
+                                <span class="radio-handle"></span>
+                                <span class="question__answer-text">Wedding?</span>
+                            </label>
+                            <label class="question__answer">
+                                <input type="radio" name="question1" />
+                                <span class="radio-handle"></span>
+                                <span class="question__answer-text">I'm just here for the cake</span>
+                            </label>
+                        </div>
+                    </div> -->
+                </div>
+                <button id="submit" class="bootan" disabled>Submit</button>
+                <div class="final-screen" style="display: none;">
+                    <svg viewBox="0 0 128 24" class="line-icon divider">
+                        <line x1="1" y1="12" x2="127" y2="12" />
+                        <line x1="9" y1="18" x2="15" y2="12" />
+                        <line x1="9" y1="6" x2="15" y2="12" />
+                        <line x1="17" y1="18" x2="23" y2="12" />
+                        <line x1="17" y1="6" x2="23" y2="12" />
+                        <line x1="25" y1="18" x2="31" y2="12" />
+                        <line x1="25" y1="6" x2="31" y2="12" />
+                        <line x1="119" y1="18" x2="113" y2="12" />
+                        <line x1="119" y1="6" x2="113" y2="12" />
+                        <line x1="111" y1="18" x2="105" y2="12" />
+                        <line x1="111" y1="6" x2="105" y2="12" />
+                        <line x1="103" y1="18" x2="97" y2="12" />
+                        <line x1="103" y1="6" x2="97" y2="12" />
+                    </svg>
+                    <h2 class="final-screen__heading">You got <span class="final-screen__score">0</span> out of <span class="final-screen__total">0</span> correct!</h2>
+                    <p class="final-screen__text">Thank you for playing, but an <em>even bigger</em> thank you for coming to celebrate our big day with us!</p>
+                    <button class="bootan" style="margin-top: 2rem;">
+                        Play Again
+                        <svg viewBox="0 0 24 24" class="line-icon" style="margin-left: 1rem;">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <line x1="13" y1="18" x2="19" y2="12" />
+                            <line x1="13" y1="6" x2="19" y2="12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <button id="submit" class="bootan">Submit</button>
         </div>
         <div class="modal" data-modal-active="false">
             <div class="modal-content">
@@ -79,7 +108,7 @@
                 <div class="modal-content__card">
                     <div class="modal-content__card-border">
                         <h2 class="modal-content__heading">Correct!</h2>
-                        <p>This is some flavor text.</p>
+                        <p class="modal-content__words-n-stuff">This is some flavor text.</p>
                         <button class="bootan" style="margin-top: 2rem;">
                             Next
                             <svg viewBox="0 0 24 24" class="line-icon" style="margin-left: 1rem;">
@@ -102,36 +131,41 @@
             let currentQuestion = 0;
             const questions = [
                 {
-                    question: 'Whose wedding even is this...?',
+                    question: 'So, uh... whose wedding even is this?',
+                    correctAnswer: 0,
                     answers: [
                         'Emily & Billy',
-                        'Somebody\'s...',
+                        'Somebody’s...',
                         'Wedding?',
-                        'I\'m just here for the cake'
+                        'I’m just here for the cake'
                     ],
-                    correctAnswer: 0
+                    modalText: 'This is definitely Billy and Emily’s wedding. You’re here for the cake, but you’re also here for the love.'
                 },
                 {
                     question: 'What is the name of the venue?',
+                    correctAnswer: 1,
                     answers: [
                         'The Barn',
                         'The Barn at the Farm',
                         'The Farm',
                         'The Farm at the Barn'
                     ],
-                    correctAnswer: 1
+                    modalText: ''
                 },
                 {
                     question: 'What is the airspeed velocity of an unlaiden swallow?',
+                    correctAnswer: 3,
                     answers: [
                         'What do you mean?',
                         'African or European?',
-                        'I don\'t know that!',
+                        'I don’t know that!',
                         'Ahhhhhhhh!'
                     ],
-                    correctAnswer: 3
+                    modalText: ''
                 },
             ];
+
+            const submitButton = document.querySelector('#submit');
 
             function addCurrentQuestion() {
                 const question = questions[currentQuestion];
@@ -165,6 +199,10 @@
                     questionAnswer.appendChild(questionAnswerText);
 
                     questionAnswers.appendChild(questionAnswer);
+
+                    questionAnswerInput.addEventListener('change', () => {
+                        submitButton.removeAttribute('disabled');
+                    });
                 });
 
                 questionDiv.appendChild(questionTitle);
@@ -181,28 +219,62 @@
             // Modal logic                                                    //
             // -------------------------------------------------------------- //
 
-            const submitButton = document.querySelector('#submit');
             const closeModalButton = document.querySelector('.modal-content__card button');
             const modal = document.querySelector('.modal');
             const modalActive = modal.dataset.modalActive;
+            const modalContentHeading = document.querySelector('.modal-content__heading');
+            const modalContentText = document.querySelector('.modal-content__words-n-stuff');
+            const correctHeadings = [
+                'Correct!',
+                'You got it!',
+                'That’s right!',
+                'You’re right!',
+                'Correctamundo!',
+                'Bingo!',
+                'Nailed it!'
+            ]
+            const incorrectHeadings = [
+                'Not quite, sorry!',
+                'Uh oh, wrong!',
+                'Oops, incorrect!',
+                'Incorrect, sorry!',
+                'Close, but completely wrong.'
+            ];
 
             submitButton.addEventListener('click', () => {
-                console.log('opening modal');
-                modal.dataset.modalActive = true;
+                const chosenAnswer = document.querySelector(`.question:nth-child(${currentQuestion + 1}) input:checked ~ .question__answer-text`);
+                if (chosenAnswer) {
+                    const chosenAnswerText = chosenAnswer.textContent;
+                    const correctAnswer = questions[currentQuestion].correctAnswer;
+
+                    // Pick a random 'correct' modal heading if it's correct
+                    if (chosenAnswerText === questions[currentQuestion].answers[correctAnswer]) {
+                        modalContentHeading.textContent = correctHeadings[Math.floor(Math.random() * incorrectHeadings.length)];
+                    }
+
+                    // Otherwise, if it's wrong, pick a random 'incorrect' modal heading
+                    else {
+                        modalContentHeading.textContent = incorrectHeadings[Math.floor(Math.random() * incorrectHeadings.length)];
+                    }
+
+                    // Add the modal text and show the modal
+                    modalContentText.textContent = questions[currentQuestion].modalText;
+                    modal.dataset.modalActive = true;
+                }
             });
 
             closeModalButton.addEventListener('click', () => {
                 console.log('closing modal');
 
-                // add the disabled class to the current question div
+                // Add the disabled class to the current question div
                 document.querySelectorAll('.question')[currentQuestion].classList.add('disabled');
 
-                // add the disabled attribute to each input in the current question
+                // Add the disabled attribute to each input in the current question
                 document.querySelectorAll(`.question:nth-child(${currentQuestion + 1}) input`).forEach(input => {
                     input.disabled = true;
                 });
 
-                // add the checkmark icon to the correct answer
+                // Add the checkmark icon to the correct answer
                 const question = questions[currentQuestion];
                 const questionAnswers = document.querySelectorAll(`.question:nth-child(${currentQuestion + 1}) .question__answer`);
                 const questionAnswer = questionAnswers[question.correctAnswer];
@@ -215,14 +287,47 @@
                 questionAnswerIcon.appendChild(questionAnswerCheckmark);
                 questionAnswer.appendChild(questionAnswerIcon);
 
-                // increment the current question
-                currentQuestion++;
-
-                // add the new question
-                addCurrentQuestion();
-
-                // close the modal
+                // Close the modal
                 modal.dataset.modalActive = false;
+
+                // Disable the submit button again until an answer for the new question is chosen
+                submitButton.setAttribute('disabled', true);
+
+                // If there is another question, increment to the new question and add its content
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    addCurrentQuestion();
+                }
+
+                // Else, if there are no more questions, remove the submit button and show the final screen
+                else {
+                    submitButton.style.display = 'none';
+
+                    // Tally up the total number of answers selected that were correct
+                    let correctAnswers = 0;
+                    questions.forEach((question, index) => {
+                        const chosenAnswer = document.querySelector(`.question:nth-child(${index + 1}) input:checked ~ .question__answer-text`);
+                        if (chosenAnswer) {
+                            const chosenAnswerText = chosenAnswer.textContent;
+                            const correctAnswer = questions[index].correctAnswer;
+                            if (chosenAnswerText === questions[index].answers[correctAnswer]) {
+                                correctAnswers++;
+                            }
+                        }
+                    });
+
+                    // Show the final score
+                    document.querySelector('.final-screen__score').textContent = correctAnswers;
+
+                    // Show the total number of questions
+                    document.querySelector('.final-screen__total').textContent = questions.length;
+
+                    // Show the final screen
+                    document.querySelector('.final-screen').style.display = 'block';
+                }
+
+                // Scroll to the new question
+                window.scrollTo({ top: document.body.scrollHeight })
             });
         </script>
     </body>
