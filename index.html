@@ -8,8 +8,262 @@
         <link href="https://api.fontshare.com/v2/css?f[]=chubbo@400&f[]=stardom@400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
         <title>Wedding Quiz &ndash; Emily & Billy 2023</title>
+        <style>
+            .intro-screen {
+                background: #2D563F;
+                bottom: 0;
+                color: #FFF;
+                display: flex;
+                flex-direction: column;
+                left: 0;
+                padding: 8%;
+                position: fixed;
+                right: 0;
+                top: 0;
+                z-index: 2;
+            }
+            .intro-screen .bootan {
+                margin-top: auto;
+            }
+            .intro-svg {
+                display: block;
+                height: auto;
+                margin: 5% auto;
+                stroke: #FFF;
+                width: 80%;
+            }
+            .intro-svg-1 {
+                animation: intro-svg-1 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.5s forwards;
+                stroke-dashoffset: 79.75px;
+                stroke-dasharray: 79.75px;
+            }
+            @keyframes intro-svg-1 {
+                0% { stroke-dashoffset: 79.75px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-2 {
+                animation: intro-svg-2 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.56s forwards;
+                stroke-dashoffset: 40.2px;
+                stroke-dasharray: 40.2px;
+            }
+            @keyframes intro-svg-2 {
+                0% { stroke-dashoffset: 40.2px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-3 {
+                animation: intro-svg-3 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.62s forwards;
+                stroke-dashoffset: 66.95px;
+                stroke-dasharray: 66.95px;
+            }
+            @keyframes intro-svg-3 {
+                0% { stroke-dashoffset: 66.95px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-4 {
+                animation: intro-svg-4 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.68s forwards;
+                stroke-dashoffset: 66.95px;
+                stroke-dasharray: 66.95px;
+            }
+            @keyframes intro-svg-4 {
+                0% { stroke-dashoffset: 66.95px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-5 {
+                animation: intro-svg-5 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.74s forwards;
+                stroke-dashoffset: 13px;
+                stroke-dasharray: 13px;
+            }
+            @keyframes intro-svg-5 {
+                0% { stroke-dashoffset: 13px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-6 {
+                animation: intro-svg-6 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.8s forwards;
+                stroke-dashoffset: 3px;
+                stroke-dasharray: 3px;
+            }
+            @keyframes intro-svg-6 {
+                0% { stroke-dashoffset: 3px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-7 {
+                animation: intro-svg-7 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.86s forwards;
+                stroke-dashoffset: 39.33px;
+                stroke-dasharray: 39.33px;
+            }
+            @keyframes intro-svg-7 {
+                0% { stroke-dashoffset: 39.33px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-8 {
+                animation: intro-svg-8 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.92s forwards;
+                stroke-dashoffset: 64.42px;
+                stroke-dasharray: 64.42px;
+            }
+            @keyframes intro-svg-8 {
+                0% { stroke-dashoffset: 64.42px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-9 {
+                animation: intro-svg-9 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.98s forwards;
+                stroke-dashoffset: 22px;
+                stroke-dasharray: 22px;
+            }
+            @keyframes intro-svg-9 {
+                0% { stroke-dashoffset: 22px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-10 {
+                animation: intro-svg-10 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.04s forwards;
+                stroke-dashoffset: 18.49px;
+                stroke-dasharray: 18.49px;
+            }
+            @keyframes intro-svg-10 {
+                0% { stroke-dashoffset: 18.49px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-11 {
+                animation: intro-svg-11 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.1s forwards;
+                stroke-dashoffset: 33.53px;
+                stroke-dasharray: 33.53px;
+            }
+            @keyframes intro-svg-11 {
+                0% { stroke-dashoffset: 33.53px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-12 {
+                animation: intro-svg-12 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.16s forwards;
+                stroke-dashoffset: 13px;
+                stroke-dasharray: 13px;
+            }
+            @keyframes intro-svg-12 {
+                0% { stroke-dashoffset: 13px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-13 {
+                animation: intro-svg-13 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.22s forwards;
+                stroke-dashoffset: 3px;
+                stroke-dasharray: 3px;
+            }
+            @keyframes intro-svg-13 {
+                0% { stroke-dashoffset: 3px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-14 {
+                animation: intro-svg-14 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.28s forwards;
+                stroke-dashoffset: 25.42px;
+                stroke-dasharray: 25.42px;
+            }
+            @keyframes intro-svg-14 {
+                0% { stroke-dashoffset: 25.42px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-15 {
+                animation: intro-svg-15 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.34s forwards;
+                stroke-dashoffset: 13px;
+                stroke-dasharray: 13px;
+            }
+            @keyframes intro-svg-15 {
+                0% { stroke-dashoffset: 13px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-16 {
+                animation: intro-svg-16 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.4s forwards;
+                stroke-dashoffset: 3px;
+                stroke-dasharray: 3px;
+            }
+            @keyframes intro-svg-16 {
+                0% { stroke-dashoffset: 3px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-17 {
+                animation: intro-svg-17 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.46s forwards;
+                stroke-dashoffset: 46.95px;
+                stroke-dasharray: 46.95px;
+            }
+            @keyframes intro-svg-17 {
+                0% { stroke-dashoffset: 46.95px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-18 {
+                animation: intro-svg-18 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.52s forwards;
+                stroke-dashoffset: 134.53px;
+                stroke-dasharray: 134.53px;
+            }
+            @keyframes intro-svg-18 {
+                0% { stroke-dashoffset: 134.53px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-19 {
+                animation: intro-svg-19 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.58s forwards;
+                stroke-dashoffset: 34.98px;
+                stroke-dasharray: 34.98px;
+            }
+            @keyframes intro-svg-19 {
+                0% { stroke-dashoffset: 34.98px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .intro-svg-20 {
+                animation: intro-svg-20 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 2.64s forwards;
+                stroke-dashoffset: 18.49px;
+                stroke-dasharray: 18.49px;
+            }
+            @keyframes intro-svg-20 {
+                0% { stroke-dashoffset: 18.49px; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .bootan {
+                align-items: center;
+                background: #9E8948;
+                border: 0;
+                color: #FFF;
+                cursor: pointer;
+                display: flex;
+                font-family: 'Chubbo', sans-serif;
+                font-size: 1.125rem;
+                justify-content: center;
+                letter-spacing: 0.125em;
+                line-height: 1;
+                padding: 1rem;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background 0.25s ease-in-out;
+                width: 100%;
+            }
+            .bootan[disabled] {
+                background: #B0B0B0;
+                cursor: not-allowed;
+            }
+        </style>
     </head>
     <body>
+        <div class="intro-screen">
+            <span>Welcome to Emily &amp; Billy’s</span>
+            <svg class="intro-svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 110 68" width="110" height="68">
+                <style>path {fill:none;stroke:#000;stroke-width: 2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}</style>
+                <path d="m1 15 1.5-.4c1.3-.3 2.5.7 2.5 2V28c0 2.2 1.8 4 4 4h0c2.2 0 4-1.8 4-4V17v9c0 2.2 1.8 4 4 4h0c2.2 0 4-1.8 4-4V10" class="intro-svg-1"></path>
+                <path d="m25 23 8-2v-.9c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v3.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9" class="intro-svg-2"></path>
+                <path d="M45 18.1c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v2.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9V4v20" class="intro-svg-3"></path>
+                <path d="M57 15.1c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v2.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9V1v20" class="intro-svg-4"></path>
+                <path d="M61 9v11" class="intro-svg-5"></path>
+                <path d="M61 5V4" class="intro-svg-6"></path>
+                <path d="M73 17v-5.9c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9V19 8.1" class="intro-svg-7"></path>
+                <path d="M85 8.1c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v2.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9V4v14.9c0 1.8-1.2 3.4-3 3.9h0c-2.5.6-5-1.3-5-3.9" class="intro-svg-8"></path>
+                <path d="M53 32v20" class="intro-svg-9"></path>
+                <path d="m45 34 16-4" class="intro-svg-10"></path>
+                <path d="M69 42.1c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9V50 39" class="intro-svg-11"></path>
+                <path d="M73 36v11" class="intro-svg-12"></path>
+                <path d="M73 32v-1" class="intro-svg-13"></path>
+                <path d="m77 35 4 10 4-12" class="intro-svg-14"></path>
+                <path d="M89 32v11" class="intro-svg-15"></path>
+                <path d="M89 28v-1" class="intro-svg-16"></path>
+                <path d="M101 34.1c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v2.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9V30v10" class="intro-svg-17"></path>
+                <path d="m37 57.4 1.1-.3c1.7-.4 2.9-2 2.9-3.8v0c0-2.5-2.4-4.4-4.8-3.8l-1.3.3c-3.5.9-5.9 4-5.9 7.5v0c0 5 4.7 8.8 9.6 7.5L101.7 49c3.7-.9 7.2 1.9 7.2 5.6v0c0 2.7-1.8 5-4.4 5.6l-1.8.4c-3 .7-5.8-1.5-5.8-4.5v0" class="intro-svg-18"></path>
+                <path d="m91 57-32 8" class="intro-svg-19"></path>
+                <path d="m87 63-16 4" class="intro-svg-20"></path>
+            </svg>
+            <button class="bootan">Start</button>
+        </div>
         <div class="quiz-container">
             <div class="quiz">
                 <div class="questions">
@@ -205,7 +459,7 @@
                         },
                         {
                             text: 'A ring pop candy',
-                            modalText: 'He’d been teasing her about getting her a ring pop for months, so when he finally did, she wasn’t sure it was for real until the top popped off showing the diamond inside.'
+                            modalText: 'He’d been teasing her about getting her a ring pop for months, so when he finally did, she wasn’t sure it was for real until the top popped off showing the real thing inside.'
                         },
                         {
                             text: 'A goose',
