@@ -9,28 +9,179 @@
         <link rel="stylesheet" href="style.css">
         <title>Wedding Quiz &ndash; Emily & Billy 2023</title>
         <style>
-            .intro-screen {
+            @keyframes img-in {
+                0% { opacity: 0; transform: translateY(-10%); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fade-in {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+            @keyframes pan-in {
+                0% { transform: translateY(105%); }
+                100% { transform: translateX(0); }
+            }
+            @keyframes hr-in {
+                0% { transform: scaleX(0); }
+                100% { transform: scaleX(1); }
+            }
+            .bootan {
+                align-items: center;
                 background: #2D563F;
-                bottom: 0;
+                border: 0;
                 color: #FFF;
+                cursor: pointer;
+                display: flex;
+                font-family: 'Chubbo', sans-serif;
+                font-size: 1.125rem;
+                font-size: 6vw;
+                justify-content: center;
+                letter-spacing: 0.125em;
+                line-height: 1;
+                padding: 1rem;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background 0.25s ease-in-out;
+                width: 100%;
+            }
+            .bootan:focus {
+                outline: 0;
+            }
+            .bootan[disabled] {
+                background: #B0B0B0;
+                cursor: not-allowed;
+            }
+            .intro-screen {
+                background: #FFF;
+                bottom: 0;
+                color: #2D563F;
                 display: flex;
                 flex-direction: column;
                 left: 0;
-                padding: 8%;
+                overflow: hidden;
+                padding: 0 8% 8% 8%;
                 position: fixed;
                 right: 0;
                 top: 0;
+                transition: opacity 0.5s linear, transform 0.5s cubic-bezier(0.4, 0, 0.9, 0.5), visibility 0.5s cubic-bezier(0.4, 0, 0.9, 0.5);
                 z-index: 2;
             }
+            .intro-screen.hidden {
+                opacity: 0;
+                transform: translateY(-5%);
+                visibility: hidden;
+            }
             .intro-screen .bootan {
+                animation: fade-in 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) 2s both;
                 margin-top: auto;
+            }
+            .intro-screen img {
+                animation: img-in 4s cubic-bezier(0.26, 0.83, 0.42, 1) both;
+                margin: 0 auto auto;
+                width: 90%;
+            }
+            .intro-screen hr {
+                animation: hr-in 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) both;
+                background: #9E8948;
+                border: 0;
+                border-radius: 1rem;
+                flex: 0 0 auto;
+                height: 0.125rem;
+                margin: 4vw auto 6vw;
+                width: 25%;
+            }
+            .intro-screen .hr1 {
+                animation-delay: 1s;
+            }
+            .intro-screen .hr2 {
+                animation-delay: 1.25s;
+            }
+            .welcome-to {
+                animation: fade-in 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) 0.25s both;
+                font-size: 1.5rem;
+                font-size: 6vw;
+                font-weight: 400;
+                display: block;
+                letter-spacing: 0.0625em;
+                line-height: 1.25;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+            .intro-names {
+                flex: 0 0 auto;
+                font-family: 'Stardom', cursive;
+                font-size: 2rem;
+                font-size: 8.5vw;
+                display: flex;
+                height: 8.5vw;
+                justify-content: center;
+                letter-spacing: 0.0625em;
+                line-height: 1;
+                margin-bottom: 0.5rem;
+                overflow: hidden;
+                text-align: center;
+                text-transform: uppercase;
+            }
+            .amberlamps {
+                margin: 0 0.375em;
+            }
+            .intro-names span {
+                animation: pan-in 0.9s cubic-bezier(0.65, 0.05, 0.36, 1) 0s both;
+            }
+            .intro-names span:nth-child(1) {
+                animation-delay: 0.3s;
+            }
+            .intro-names span:nth-child(2) {
+                animation-delay: 0.4s;
+            }
+            .intro-names span:nth-child(3) {
+                animation-delay: 0.5s;
+            }
+            .intro-names span:nth-child(4) {
+                animation-delay: 0.6s;
+            }
+            .intro-names span:nth-child(5) {
+                animation-delay: 0.7s;
+            }
+            .intro-names span:nth-child(6) {
+                animation-delay: 0.8s;
+            }
+            .intro-names span:nth-child(7) {
+                animation-delay: 0.9s;
+            }
+            .intro-names span:nth-child(8) {
+                animation-delay: 1s;
+            }
+            .intro-names span:nth-child(9) {
+                animation-delay: 1.1s;
+            }
+            .intro-names span:nth-child(10) {
+                animation-delay: 1.2s;
+            }
+            .intro-names span:nth-child(11) {
+                animation-delay: 1.3s;
+            }
+            .intro-names span:nth-child(12) {
+                animation-delay: 1.4s;
+            }
+            .intro-names span:nth-child(13) {
+                animation-delay: 1.5s;
             }
             .intro-svg {
                 display: block;
                 height: auto;
                 margin: 5% auto;
-                stroke: #FFF;
+                min-height: 8rem;
                 width: 80%;
+            }
+            .intro-svg path {
+                fill: none;
+                stroke: #2D563F;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-miterlimit: 10;
             }
             .intro-svg-1 {
                 animation: intro-svg-1 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) 1.5s forwards;
@@ -212,35 +363,37 @@
                 0% { stroke-dashoffset: 18.49px; }
                 100% { stroke-dashoffset: 0; }
             }
-            .bootan {
-                align-items: center;
-                background: #9E8948;
-                border: 0;
-                color: #FFF;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Chubbo', sans-serif;
-                font-size: 1.125rem;
-                justify-content: center;
-                letter-spacing: 0.125em;
-                line-height: 1;
-                padding: 1rem;
+            .ready-text {
+                animation: fade-in 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) 2.5s both;
+                font-size: 4vw;
+                margin: 5% 15% 0;
                 text-align: center;
-                text-transform: uppercase;
-                transition: background 0.25s ease-in-out;
-                width: 100%;
-            }
-            .bootan[disabled] {
-                background: #B0B0B0;
-                cursor: not-allowed;
             }
         </style>
     </head>
     <body>
         <div class="intro-screen">
-            <span>Welcome to Emily &amp; Billy’s</span>
-            <svg class="intro-svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 110 68" width="110" height="68">
-                <style>path {fill:none;stroke:#000;stroke-width: 2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}</style>
+            <img src="top-branches.png" alt="" />
+            <hr class="hr1" />
+            <span class="welcome-to">Welcome to</span>
+            <span class="intro-names">
+                <!-- Emily &amp; Billy’s -->
+                <span>E</span>
+                <span>m</span>
+                <span>i</span>
+                <span>l</span>
+                <span>y</span>
+                <span class="amberlamps">&amp;</span>
+                <span>B</span>
+                <span>i</span>
+                <span>l</span>
+                <span>l</span>
+                <span>y</span>
+                <span>’</span>
+                <span>s</span>
+            </span>
+            <hr class="hr2" />
+            <svg class="intro-svg" viewBox="0 0 110 68">
                 <path d="m1 15 1.5-.4c1.3-.3 2.5.7 2.5 2V28c0 2.2 1.8 4 4 4h0c2.2 0 4-1.8 4-4V17v9c0 2.2 1.8 4 4 4h0c2.2 0 4-1.8 4-4V10" class="intro-svg-1"></path>
                 <path d="m25 23 8-2v-.9c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v3.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9" class="intro-svg-2"></path>
                 <path d="M45 18.1c0-2.6-2.4-4.5-5-3.9h0c-1.8.4-3 2-3 3.9v2.8c0 2.6 2.4 4.5 5 3.9h0c1.8-.4 3-2 3-3.9V4v20" class="intro-svg-3"></path>
@@ -263,6 +416,7 @@
                 <path d="m87 63-16 4" class="intro-svg-20"></path>
             </svg>
             <button class="bootan">Start</button>
+            <span class="ready-text">Ready to see how well you know the new couple?</span>
         </div>
         <div class="quiz-container">
             <div class="quiz">
@@ -326,6 +480,9 @@
                     </button>
                 </div>
             </div>
+            <p class="bottom-progress">
+                <span class="bottom-progress__current">1</span> of <span class="bottom-progress__total">10</span>
+            </p>
         </div>
         <div class="modal" data-modal-active="false">
             <div class="modal-content">
@@ -379,6 +536,18 @@
         </div>
         <script>
             // -------------------------------------------------------------- //
+            // Intro logic                                                    //
+            // -------------------------------------------------------------- //
+
+            const introButton = document.querySelector('.intro-screen .bootan');
+            const introScreen = document.querySelector('.intro-screen');
+
+            introButton.addEventListener('click', () => {
+                introScreen.classList.add('hidden');
+            });
+
+
+            // -------------------------------------------------------------- //
             // Questions logic                                                //
             // -------------------------------------------------------------- //
 
@@ -393,8 +562,8 @@
                             modalText: 'Good thing you paid attention to the names on the invite!'
                         },
                         {
-                            text: 'Kanye & Kim Kardashian',
-                            modalText: 'It’s not Kanye and Kim, but let’s be real here, Kanye and Kim <em>wish</em> they had a wedding this awesome.' },
+                            text: 'Lucy & Ricky Ricardo',
+                            modalText: 'It’s not Lucy and Ricky, but let’s be real here, Lucy and Ricky <em>wish</em> they had a wedding this awesome.' },
                         {
                             text: 'Somebody’s...',
                             modalText: 'Technically correct, just not the correct-est. But don’t worry, you’ll still get a slice of the cake.'
@@ -522,6 +691,8 @@
 
             // Add the first question on page load
             addCurrentQuestion();
+
+            document.querySelector('.bottom-progress__total').textContent = questions.length;
 
             // -------------------------------------------------------------- //
             // Modal logic                                                    //
