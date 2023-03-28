@@ -166,13 +166,13 @@ textarea {
 .quiz-container {
     margin: 0 auto;
     max-width: 32rem;
-    padding: 2%;
+    padding: 3%;
     position: relative;
 }
 
 .quiz {
     border: 1px solid #9E8948;
-    padding: 8%;
+    padding: 7%;
 }
 
 .question {

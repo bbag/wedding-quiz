@@ -34,7 +34,7 @@
                 display: flex;
                 font-family: 'Chubbo', sans-serif;
                 font-size: 1.125rem;
-                font-size: 6vw;
+                font-size: 5vw;
                 justify-content: center;
                 letter-spacing: 0.125em;
                 line-height: 1;
@@ -470,7 +470,7 @@
                     </svg>
                     <h2 class="final-screen__heading">You got <span class="final-screen__score">0</span> out of <span class="final-screen__total">0</span> correct!</h2>
                     <p class="final-screen__text">Thank you for playing, but an <em>even bigger</em> thank you for coming to celebrate our big day with us!</p>
-                    <button class="bootan" style="margin-top: 2rem;">
+                    <button id="play-again" class="bootan" style="margin-top: 2rem;">
                         Play Again
                         <svg viewBox="0 0 24 24" class="line-icon" style="margin-left: 1rem;">
                             <line x1="5" y1="12" x2="19" y2="12" />
@@ -782,6 +782,9 @@
                 if (currentQuestion < questions.length - 1) {
                     currentQuestion++;
                     addCurrentQuestion();
+                    
+                    // Update the progress count
+                    document.querySelector('.bottom-progress__current').textContent = currentQuestion + 1;
                 }
 
                 // Else, if there are no more questions, remove the submit button and show the final screen
@@ -809,10 +812,35 @@
 
                     // Show the final screen
                     document.querySelector('.final-screen').style.display = 'block';
+
+                    // Hide the progress count
+                    document.querySelector('.bottom-progress').style.display = 'none';
                 }
 
                 // Scroll to the new question
-                window.scrollTo({ top: document.body.scrollHeight })
+                window.scrollTo({ top: document.body.scrollHeight });
+            });
+
+            // Play again button
+            document.querySelector('#play-again').addEventListener('click', () => {
+                currentQuestion = 0;
+                document.querySelector('.questions').innerHTML = '';
+                addCurrentQuestion();
+
+                // Update the progress count
+                document.querySelector('.bottom-progress__current').textContent = currentQuestion + 1;
+
+                // Re-hide the final screen
+                document.querySelector('.final-screen').style.display = 'none';
+
+                // Show the progress count (in case it was hidden)
+                document.querySelector('.bottom-progress').removeAttribute('style');
+
+                // Re-show the submit button
+                submitButton.removeAttribute('style');
+
+                // Remove the disabled attribute from the submit button
+                submitButton.removeAttribute('disabled');
             });
         </script>
     </body>
