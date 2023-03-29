@@ -194,10 +194,33 @@ textarea {
 
 .question__title {
     color: #2D563F;
+    display: flex;
+    padding-left: 1.75rem;
+    position: relative;
+}
+
+.question__title::after {
+    background: #9E8948;
+    content: '';
+    display: block;
+    height: 0.125rem;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.125rem;
 }
 
 .question.disabled .question__title {
     color: #B0B0B0;
+}
+
+.question.disabled .question__title::after {
+    background: #B0B0B0;
+}
+
+.question__text {
+    margin-bottom: 1.5rem;
 }
 
 .question__answer {
@@ -266,7 +289,7 @@ textarea {
 .bottom-progress {
     color: #888;
     display: block;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     text-align: center;
 }
 
@@ -404,6 +427,44 @@ textarea {
     content: '';
 }
 
+#billy .body,
+#emily .body {
+    width: 100%;
+}
+
+#billy .head,
+#emily .head {
+    bottom: 72%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+#billy [class^='arm'],
+#billy [class^='forearm'],
+#emily [class^='arm'],
+#emily [class^='forearm'] {
+    border-radius: 72rem;
+    position: absolute;
+    transform-origin: 10% 50%;
+}
+
+#billy [class^='forearm'],
+#emily [class^='forearm'] {
+    height: 100%;
+    top: 0% !important;
+    width: 100%;
+}
+
+#billy .forearm--left,
+#billy .forearm--right,
+#emily .forearm--left,
+#emily .forearm--right {
+    position: absolute;
+    left: 80%;
+    top: 0%;
+}
+
 .hand {
     background: #F4C6A1;
     border-radius: 100%;
@@ -424,24 +485,13 @@ textarea {
     transition-delay: 650ms;
 }
 
-#billy .body {
-    width: 100%;
-}
-
 #billy .head {
-    bottom: 72%;
     left: 49%;
-    position: absolute;
-    transform: translateX(-50%);
-    width: 100%;
 }
 
 #billy [class^='arm'],
 #billy [class^='forearm'] {
     background: #7C7C7C;
-    border-radius: 72rem;
-    position: absolute;
-    transform-origin: 10% 50%;
 }
 
 #billy [class^='arm'] {
@@ -451,9 +501,7 @@ textarea {
 }
 
 #billy [class^='forearm'] {
-    height: 100%;
     top: 15%;
-    width: 100%;
 }
 
 #billy .arm--left {
@@ -463,9 +511,6 @@ textarea {
 
 #billy .forearm--left {
     transform: rotate(40deg);
-    position: absolute;
-    left: 80%;
-    top: 0%;
 }
 
 #billy .arm--right {
@@ -475,55 +520,6 @@ textarea {
 
 #billy .forearm--right {
     transform: rotate(-40deg);
-    position: absolute;
-    left: 80%;
-    top: 0%;
-}
-
-#billy[data-state='yay'] .arm--left,
-#billy[data-state='yay'] .arm--right,
-#billy[data-state='yay'] .forearm--left,
-#billy[data-state='yay'] .forearm--right {
-    animation-direction: alternate;
-    animation-duration: 350ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
-}
-
-#billy[data-state='yay'] .arm--left {
-    animation-name: yay--billy-arm-left;
-}
-
-#billy[data-state='yay'] .forearm--left {
-    animation-name: yay--billy-forearm-left;
-}
-
-#billy[data-state='yay'] .arm--right {
-    animation-name: yay--billy-arm-right;
-}
-
-#billy[data-state='yay'] .forearm--right {
-    animation-name: yay--billy-forearm-right;
-}
-
-@keyframes yay--billy-arm-left {
-    from { transform: rotate(-120deg); }
-    to { transform: rotate(-220deg); }
-}
-
-@keyframes yay--billy-forearm-left {
-    from { transform: rotate(20deg); }
-    to { transform: rotate(130deg); }
-}
-
-@keyframes yay--billy-arm-right {
-    from { transform: rotate(-65deg); }
-    to { transform: rotate(20deg); }
-}
-
-@keyframes yay--billy-forearm-right {
-    from { transform: rotate(-15deg); }
-    to { transform: rotate(-130deg); }
 }
 
 /* -------------------------------------------------------- */
@@ -535,35 +531,19 @@ textarea {
     transition-delay: 500ms;
 }
 
-#emily .body {
-    width: 100%;
-}
-
 #emily .head {
-    bottom: 72%;
     left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
-    width: 100%;
 }
 
 #emily [class^='arm'],
 #emily [class^='forearm'] {
     background: #F4C6A1;
-    border-radius: 72rem;
-    position: absolute;
     top: 15%;
-    transform-origin: 10% 50%;
 }
 
 #emily [class^='arm'] {
     height: 8.5%;
     width: 70%;
-}
-
-#emily [class^='forearm'] {
-    height: 100%;
-    width: 100%;
 }
 
 #emily .arm--left {
@@ -573,9 +553,6 @@ textarea {
 
 #emily .forearm--left {
     transform: rotate(20deg);
-    position: absolute;
-    left: 80%;
-    top: 0%;
 }
 
 #emily .arm--right {
@@ -585,53 +562,149 @@ textarea {
 
 #emily .forearm--right {
     transform: rotate(-20deg);
-    position: absolute;
-    left: 80%;
-    top: 0%;
 }
 
-#emily[data-state='yay'] .arm--left,
-#emily[data-state='yay'] .arm--right,
-#emily[data-state='yay'] .forearm--left,
-#emily[data-state='yay'] .forearm--right {
+/* -------------------------------------------------------- */
+/* Animations                                               */
+/* -------------------------------------------------------- */
+
+/* Yay */
+[data-state='yay'] .arm--left,
+[data-state='yay'] .arm--right,
+[data-state='yay'] .forearm--left,
+[data-state='yay'] .forearm--right {
     animation-direction: alternate;
     animation-duration: 450ms;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
 }
 
-#emily[data-state='yay'] .arm--left {
-    animation-name: yay--emily-arm-left;
+[data-state='yay'] .arm--left {
+    animation-name: yay--arm-left;
 }
 
-#emily[data-state='yay'] .forearm--left {
-    animation-name: yay--emily-forearm-left;
+[data-state='yay'] .forearm--left {
+    animation-name: yay--forearm-left;
 }
 
-#emily[data-state='yay'] .arm--right {
-    animation-name: yay--emily-arm-right;
+[data-state='yay'] .arm--right {
+    animation-name: yay--arm-right;
 }
 
-#emily[data-state='yay'] .forearm--right {
-    animation-name: yay--emily-forearm-right;
+[data-state='yay'] .forearm--right {
+    animation-name: yay--forearm-right;
 }
 
-@keyframes yay--emily-arm-left {
+@keyframes yay--arm-left {
     from { transform: rotate(-120deg); }
     to { transform: rotate(-220deg); }
 }
 
-@keyframes yay--emily-forearm-left {
+@keyframes yay--forearm-left {
     from { transform: rotate(20deg); }
     to { transform: rotate(135deg); }
 }
 
-@keyframes yay--emily-arm-right {
+@keyframes yay--arm-right {
     from { transform: rotate(20deg); }
     to { transform: rotate(-65deg); }
 }
 
-@keyframes yay--emily-forearm-right {
+@keyframes yay--forearm-right {
     from { transform: rotate(-130deg); }
     to { transform: rotate(-15deg); }
+}
+
+/* Clap */
+[data-state='clap'] .arm--left,
+[data-state='clap'] .arm--right,
+[data-state='clap'] .forearm--left,
+[data-state='clap'] .forearm--right {
+    animation-direction: alternate;
+    animation-duration: 125ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
+}
+
+[data-state='clap'] .arm--left {
+    animation-name: clap--arm-left;
+}
+
+[data-state='clap'] .forearm--left {
+    animation-name: clap--forearm-left;
+}
+
+[data-state='clap'] .arm--right {
+    animation-name: clap--arm-right;
+}
+
+[data-state='clap'] .forearm--right {
+    animation-name: clap--forearm-right;
+}
+
+@keyframes clap--arm-left {
+    from { transform: rotate(-250deg); }
+    to { transform: rotate(-260deg); }
+}
+
+@keyframes clap--forearm-left {
+    from { transform: rotate(200deg) scaleX(0.6); }
+    to { transform: rotate(230deg) scaleX(0.85); }
+}
+
+@keyframes clap--arm-right {
+    from { transform: rotate(70deg); }
+    to { transform: rotate(80deg); }
+}
+
+@keyframes clap--forearm-right {
+    from { transform: rotate(-200deg) scaleX(0.6) }
+    to { transform: rotate(-230deg) scaleX(0.85) }
+}
+
+/* Woohoo */
+[data-state='woohoo'] .arm--left,
+[data-state='woohoo'] .arm--right,
+[data-state='woohoo'] .forearm--left,
+[data-state='woohoo'] .forearm--right {
+    animation-direction: alternate;
+    animation-duration: 350ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+[data-state='woohoo'] .arm--left {
+    animation-name: woohoo--arm-left;
+}
+
+[data-state='woohoo'] .forearm--left {
+    animation-name: woohoo--forearm-left;
+}
+
+[data-state='woohoo'] .arm--right {
+    animation-name: woohoo--arm-right;
+}
+
+[data-state='woohoo'] .forearm--right {
+    animation-name: woohoo--forearm-right;
+}
+
+@keyframes woohoo--arm-left {
+    from { transform: rotate(-120deg); }
+    to { transform: rotate(-220deg); }
+}
+
+@keyframes woohoo--forearm-left {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(130deg); }
+}
+
+@keyframes woohoo--arm-right {
+    from { transform: rotate(-65deg); }
+    to { transform: rotate(20deg); }
+}
+
+@keyframes woohoo--forearm-right {
+    from { transform: rotate(-15deg); }
+    to { transform: rotate(-130deg); }
 }

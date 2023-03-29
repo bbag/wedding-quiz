@@ -433,21 +433,6 @@
                                     <polyline points="20 7 10 17 5 12" />
                                 </svg>
                             </label>
-                            <label class="question__answer">
-                                <input type="radio" name="question1" />
-                                <span class="radio-handle"></span>
-                                <span class="question__answer-text">Somebody's...</span>
-                            </label>
-                            <label class="question__answer">
-                                <input type="radio" name="question1" />
-                                <span class="radio-handle"></span>
-                                <span class="question__answer-text">Wedding?</span>
-                            </label>
-                            <label class="question__answer">
-                                <input type="radio" name="question1" />
-                                <span class="radio-handle"></span>
-                                <span class="question__answer-text">I'm just here for the cake</span>
-                            </label>
                         </div>
                     </div> -->
                 </div>
@@ -487,7 +472,7 @@
         <div class="modal" data-modal-active="false">
             <div class="modal-content">
                 <div class="billy-and-emily">
-                    <div id="emily" data-state="yay">
+                    <div id="emily" data-state="clap">
                         <img class="body" src="dress.svg" alt="">
                         <div class="arm--left">
                             <div class="forearm--left">
@@ -501,7 +486,7 @@
                         </div>
                         <img class="head" src="emily-head-sm.png" alt="Billy's head" />
                     </div>
-                    <div id="billy" data-state="yay">
+                    <div id="billy" data-state="clap">
                         <img class="body" src="suit.svg" alt="">
                         <div class="arm--left">
                             <div class="forearm--left">
@@ -703,6 +688,7 @@
             const modalActive = modal.dataset.modalActive;
             const modalContentHeading = document.querySelector('.modal-content__heading');
             const modalContentText = document.querySelector('.modal-content__words-n-stuff');
+            const animations = ['clap', 'yay', 'woohoo'];
             const correctHeadings = [
                 'Correct!',
                 'You got it!',
@@ -711,10 +697,11 @@
                 'Bingo!',
                 'Nailed it!',
                 'You are so, so right.'
-            ]
+            ];
             const incorrectHeadings = [
                 'Not quite, sorry!',
                 'Uh oh, wrong!',
+                'Uh oh, not quite!',
                 'Uh oh, incorrect!',
                 'Oops, incorrect!',
                 'Incorrect, sorry!',
@@ -723,6 +710,7 @@
 
             submitButton.addEventListener('click', () => {
                 const chosenAnswer = document.querySelector(`.question:nth-child(${currentQuestion + 1}) input:checked ~ .question__answer-text`);
+
                 if (chosenAnswer) {
                     const chosenAnswerText = chosenAnswer.textContent;
                     const correctAnswer = questions[currentQuestion].correctAnswer;
@@ -730,11 +718,31 @@
                     // Pick a random 'correct' modal heading if it's correct
                     if (chosenAnswerText === questions[currentQuestion].answers[correctAnswer].text) {
                         modalContentHeading.textContent = correctHeadings[Math.floor(Math.random() * incorrectHeadings.length)];
+
+                        // Show the .billy-and-emily div (for the next time the modal opens)
+                        document.querySelector('.billy-and-emily').removeAttribute('style');
+
+                        // Give a random animation to #emily's data-state attribute that is different than the current one
+                        let emilyAnimation = animations[Math.floor(Math.random() * animations.length)];
+                        while (emilyAnimation === document.querySelector('#emily').dataset.state) {
+                            emilyAnimation = animations[Math.floor(Math.random() * animations.length)];
+                        }
+                        document.querySelector('#emily').dataset.state = emilyAnimation;
+
+                        // Give a random animation to #billy that doesn't match the current one or the one given to #emily
+                        let billyAnimation = animations[Math.floor(Math.random() * animations.length)];
+                        while (billyAnimation === document.querySelector('#billy').dataset.state || billyAnimation === emilyAnimation) {
+                            billyAnimation = animations[Math.floor(Math.random() * animations.length)];
+                        }
+                        document.querySelector('#billy').dataset.state = billyAnimation;
                     }
 
                     // Otherwise, if it's wrong, pick a random 'incorrect' modal heading
                     else {
                         modalContentHeading.textContent = incorrectHeadings[Math.floor(Math.random() * incorrectHeadings.length)];
+
+                        // Hide the .billy-and-emily div
+                        document.querySelector('.billy-and-emily').style = 'padding-bottom: 0; visibility: hidden;';
                     }
 
                     // Get the index of the chosen answer
